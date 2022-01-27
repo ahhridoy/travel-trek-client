@@ -1,9 +1,9 @@
 import React from "react";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import banner1 from "../../images/banner1.png";
-import banner2 from "../../images/banner2.png";
-import banner3 from "../../images/banner3.png";
+import banner1 from "../../../images/banner1.png";
+import banner2 from "../../../images/banner2.png";
+import banner3 from "../../../images/banner3.png";
 import "./Banner.css";
 
 const Banner = () => {
