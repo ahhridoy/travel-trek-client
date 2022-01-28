@@ -6,7 +6,7 @@ const TopRatedBlogs = () => {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/blogs")
+        fetch("https://damp-stream-68541.herokuapp.com/blogs")
             .then((res) => res.json())
             .then((data) => setBlogs(data.blogs));
     }, []);

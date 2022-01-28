@@ -8,17 +8,17 @@ const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div>
-            <nav className="bg-blue-600">
+            <nav className="bg-blue-600 p-4">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center">
                             <div className="flex-shrink-0">
-                                <h1 className="font-bold text-2xl text-white">
+                                <h1 className="font-bold text-4xl text-white">
                                     Travel Trek!
                                 </h1>
                             </div>
-                            <div className="hidden md:block">
-                                <div className="ml-10 flex items-baseline space-x-4">
+                            <div className="hidden md:block text-xl">
+                                <div className="ml-10 flex items-baseline">
                                     <Link
                                         to="/home"
                                         className="font-bold px-3 py-2 text-white rounded-lg hover:bg-slate-100 hover:text-slate-900"

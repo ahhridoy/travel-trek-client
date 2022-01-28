@@ -17,7 +17,7 @@ const Banner = () => {
     slidesToScroll: 1,
   };
   return (
-    <div>
+    <div data-aos="zoom-in">
       <div className="mx-9">
         <Slider {...settings}>
           <div>

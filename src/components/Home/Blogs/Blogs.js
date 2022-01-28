@@ -10,7 +10,9 @@ const Blogs = () => {
     const size = 10;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs?page=${page}&&size=${size}`)
+        fetch(
+            `https://damp-stream-68541.herokuapp.com/blogs?page=${page}&&size=${size}`
+        )
             .then((res) => res.json())
             .then((data) => {
                 setBlogs(data.blogs);
@@ -23,8 +25,13 @@ const Blogs = () => {
     return (
         <div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div className="col-span-1 p-5 mx-9 bg-white mt-16 mb-5">
-                    <h1 className="font-bold text-2xl my-9 text-blue-600">Top Rated Spots</h1>
+                <div
+                    className="col-span-1 p-5 mx-9 bg-white mt-16 mb-5"
+                    data-aos="fade-right"
+                >
+                    <h1 className="font-bold text-2xl my-9 text-blue-600">
+                        Top Rated Spots
+                    </h1>
                     <TopRatedBlogs />
                 </div>
                 <div className="col-span-2">

@@ -34,7 +34,7 @@ const Register = () => {
     };
 
     return (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center" data-aos="fade-right">
             <div className="p-8 w-6/12 text-left">
                 <h1 className="text-2xl font-bold py-5">Create An Account</h1>
                 <form action="" onSubmit={handleSubmit}>
