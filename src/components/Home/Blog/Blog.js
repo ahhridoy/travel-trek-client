@@ -12,8 +12,8 @@ const Blog = ({ blog }) => {
                     </div>
                     <div>
                         <h1 className="text-2xl font-bold py-2">{title}</h1>
-                        <p>{description}</p>
-                        <small>Location: {location}</small>
+                        <p>"{description}"</p>
+                        <small>Location: {location}.</small>
                         <p className="text-xl text-blue-600 py-2">Posted By: {name}</p>
                     </div>
                 </div>

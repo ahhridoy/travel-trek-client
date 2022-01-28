@@ -9,6 +9,7 @@ import Home from "./components/Home/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Login/Register";
 import NotFound from "./components/NotFound/NotFound";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Footer from "./components/Shared/Footer";
 import Header from "./components/Shared/Header";
 import TotalBlogs from "./components/TotalBlogs/TotalBlogs";
@@ -21,8 +22,14 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="home" element={<Home />} />
                 <Route path="totalBlogs" element={<TotalBlogs />} />
-                <Route path="blogDetails/:id" element={<BLogDetails />} />
-                {/* <Route path="blogPosts" element={<BlogPosts />} /> */}
+                <Route
+                    path="blogDetails/:id"
+                    element={
+                        <PrivateRoute>
+                            <BLogDetails />
+                        </PrivateRoute>
+                    }
+                />
                 <Route path="dashboard" element={<Dashboard />}>
                     <Route path="showBlogs" element={<ShowBlogs />} />
                     <Route path="postBlogs" element={<PostBlogs />} />

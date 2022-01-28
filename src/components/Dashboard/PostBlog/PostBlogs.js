@@ -79,7 +79,7 @@ const PostBlogs = () => {
                         type="submit"
                         className="font-bold my-1 bg-pink-600 px-3 py-2 rounded text-white w-full"
                     >
-                        Post
+                        Post Your Blog
                     </button>
                 </form>
                 {success && (

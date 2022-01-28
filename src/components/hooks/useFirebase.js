@@ -5,6 +5,7 @@ import {
     signInWithEmailAndPassword,
     signInWithPopup,
     GoogleAuthProvider,
+    sendEmailVerification,
     signOut,
     onAuthStateChanged,
     updateProfile,
@@ -34,8 +35,9 @@ const useFirebase = () => {
                 })
                     .then(() => {})
                     .catch((error) => {});
-                    navigate("/");
+                navigate("/");
                 setAuthError("");
+                verifyEmail();
             })
             .catch((error) => {
                 setAuthError(error.message);
@@ -72,6 +74,10 @@ const useFirebase = () => {
                 setAuthError(error.message);
             })
             .finally(() => setIsLoading(false));
+    };
+
+    const verifyEmail = () => {
+        sendEmailVerification(auth.currentUser).then(() => {});
     };
 
     // observe user state
@@ -129,10 +135,6 @@ const useFirebase = () => {
 };
 
 export default useFirebase;
-
-
-
-
 
 // import { useEffect, useState } from "react";
 // import {

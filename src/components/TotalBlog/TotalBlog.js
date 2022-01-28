@@ -13,9 +13,11 @@ const TotalBlog = ({ blog }) => {
                         </div>
                         <div>
                             <h1 className="font-bold">{title}</h1>
-                            <p>{description}</p>
-                            <small>Location: {location}</small>
-                            <p className="text-xl text-blue-600 py-2">Posted By: {name}</p>
+                            <p>"{description}"</p>
+                            <small>Location: {location}.</small>
+                            <p className="text-xl text-blue-600 py-2">
+                                Posted By: {name}
+                            </p>
                         </div>
                     </div>
                 </Link>

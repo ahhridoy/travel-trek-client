@@ -26,7 +26,7 @@ const Footer = () => {
         </div>
       </div> <br />
       <div>
-        <small> 2021 All rights reserved.</small>
+        <small> 2022 All rights reserved.</small>
       </div>
     </div>
   );

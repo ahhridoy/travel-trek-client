@@ -11,7 +11,7 @@ const TopRatedBlog = ({blog}) => {
           <div>
             <h1 className="font-bold">{title}</h1>
             <p>Total Cost: ${cost}</p>
-            <small>Location: {location}</small>
+            <small>Location: {location}.</small>
           </div>
         </div>
       </div>
