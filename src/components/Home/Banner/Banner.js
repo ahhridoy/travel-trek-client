@@ -1,15 +1,11 @@
 import React from "react";
 import Slider from "react-slick";
-import { Link } from "react-router-dom";
 import banner1 from "../../../images/banner1.png";
 import banner2 from "../../../images/banner2.png";
 import banner3 from "../../../images/banner3.png";
 import "./Banner.css";
-import useAuth from "../../hooks/useAuth";
 
 const Banner = () => {
-  const {user} = useAuth();
-
   const settings = {
     dots: true,
     infinite: true,
@@ -32,12 +28,12 @@ const Banner = () => {
           </div>
         </Slider>
       </div>
-      { user?.email &&
+      {/* { user?.email &&
         <Link to="/blogPosts">
         <button className="font-bold my-9 bg-blue-600 px-3 py-2 rounded text-white w-6/12">
           Post
         </button>
-      </Link>}
+      </Link>} */}
     </div>
   );
 };
