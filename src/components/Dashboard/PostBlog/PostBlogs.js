@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 
 const PostBlogs = () => {
     const [success, setSuccess] = useState(false);
-    const [image, setImage] = useState(null);
 
     const {
         register,
