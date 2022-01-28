@@ -24,11 +24,11 @@ const Blogs = () => {
         <div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div className="col-span-1 p-5 mx-9 bg-white mt-16 mb-5">
-                    <h1 className="font-bold text-2xl my-9">Top Rated Spots</h1>
+                    <h1 className="font-bold text-2xl my-9 text-blue-600">Top Rated Spots</h1>
                     <TopRatedBlogs />
                 </div>
                 <div className="col-span-2">
-                    <h1 className="font-bold text-3xl mt-16 mb-5">
+                    <h1 className="font-bold text-3xl mt-16 mb-5 text-blue-600">
                         Most Beautiful Places In The World
                     </h1>
                     {blogs.map((blog) => (

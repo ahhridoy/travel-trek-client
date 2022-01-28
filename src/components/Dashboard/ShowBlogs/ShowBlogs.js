@@ -9,6 +9,27 @@ const ShowBlogs = () => {
             .then((data) => setBlogs(data.blogs));
     }, []);
 
+    // DELETE AN USER
+    const handleDeleteBlog = (id) => {
+        const proceed = window.confirm("Are you sure, you want to delete?");
+        if (proceed) {
+            const url = `http://localhost:5000/blogs/${id}`;
+            fetch(url, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.acknowledged) {
+                        alert("Deleted Successfully");
+                        const remainingUsers = blogs.filter(
+                            (product) => product._id !== id
+                        );
+                        setBlogs(remainingUsers);
+                    }
+                });
+        }
+    };
+
     return (
         <div className="flex flex-col items-center justify-center text-left">
             <table class="table-auto">
@@ -28,6 +49,7 @@ const ShowBlogs = () => {
                             <td className="px-5">${blog.cost}</td>
                             <td className="px-5">
                                 <button
+                                    onClick={() => handleDeleteBlog(blog._id)}
                                     className="px-2 py-1 my-5 bg-pink-600 rounded text-white w-full"
                                 >
                                     Delete

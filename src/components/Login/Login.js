@@ -3,24 +3,25 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const Login = () => {
-  const [loginData, setLoginData] = useState({});
-    const { signInWithGoogle, loginUser } = useAuth();
+    const [loginData, setLoginData] = useState({});
+    const { signInWithGoogle, user, loginUser, isLoading, authError } =
+        useAuth();
 
     const location = useLocation();
     let navigate = useNavigate();
 
     const handleOnBlur = (e) => {
-      const field = e.target.name;
-      const value = e.target.value;
-      const newLoginData = { ...loginData };
-      newLoginData[field] = value;
-      setLoginData(newLoginData);
-  };
+        const field = e.target.name;
+        const value = e.target.value;
+        const newLoginData = { ...loginData };
+        newLoginData[field] = value;
+        setLoginData(newLoginData);
+    };
 
-  const handleSubmit = (e) => {
-      loginUser(loginData.email, loginData.password, location, navigate);
-      e.preventDefault();
-  };
+    const handleSubmit = (e) => {
+        loginUser(loginData.email, loginData.password, location, navigate);
+        e.preventDefault();
+    };
 
     return (
         <div className="flex items-center justify-center">
@@ -33,7 +34,7 @@ const Login = () => {
                         </span>
                         <input
                             type="email"
-                            onBlur=""
+                            name="email"
                             className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
                             placeholder="Email"
                             onBlur={handleOnBlur}
@@ -47,7 +48,7 @@ const Login = () => {
                         </span>
                         <input
                             type="password"
-                            onBlur=""
+                            name="password"
                             className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
                             placeholder="Password"
                             onBlur={handleOnBlur}
@@ -70,7 +71,13 @@ const Login = () => {
                     Google Sign In
                 </button>{" "}
                 <br /> <br />
-                <Link to="/register" className="underline underline-offset-2">
+                {isLoading && <h1 className="text-pink-600">Processing...</h1>}
+                {user?.email && (
+                    <p className="text-green-600">Logged in successfully!</p>
+                )}
+                {authError && <p className="text-green-600">{authError}</p>}{" "}
+                <br />
+                <Link to="/register" className="underline underline-offset-2 text-blue-600">
                     New User?
                 </Link>
             </div>

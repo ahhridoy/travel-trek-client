@@ -5,32 +5,33 @@ import useAuth from "../hooks/useAuth";
 
 const Register = () => {
     const [loginData, setLoginData] = useState({});
-  const {signInWithGoogle, registerUser} = useAuth() 
+    const { signInWithGoogle, user, registerUser, isLoading, authError } =
+        useAuth();
 
-  let navigate = useNavigate();
+    let navigate = useNavigate();
 
-  const handleOnBlur = (e) => {
-    const field = e.target.name;
-    const value = e.target.value;
-    const newLoginData = { ...loginData };
-    newLoginData[field] = value;
-    console.log(newLoginData);
-    setLoginData(newLoginData);
-};
+    const handleOnBlur = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newLoginData = { ...loginData };
+        newLoginData[field] = value;
+        console.log(newLoginData);
+        setLoginData(newLoginData);
+    };
 
-const handleSubmit = (e) => {
-    if (loginData.password !== loginData.password2) {
-        alert("Your password did not match");
-        return;
-    }
-    registerUser(
-        loginData.email,
-        loginData.password,
-        loginData.name,
-        navigate
-    );
-    e.preventDefault();
-};
+    const handleSubmit = (e) => {
+        if (loginData.password !== loginData.password2) {
+            alert("Your password did not match");
+            return;
+        }
+        registerUser(
+            loginData.email,
+            loginData.password,
+            loginData.name,
+            navigate
+        );
+        e.preventDefault();
+    };
 
     return (
         <div className="flex items-center justify-center">
@@ -43,6 +44,7 @@ const handleSubmit = (e) => {
                         </span>
                         <input
                             type="text"
+                            name="name"
                             className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
                             placeholder="Name"
                             onBlur={handleOnBlur}
@@ -56,6 +58,7 @@ const handleSubmit = (e) => {
                         </span>
                         <input
                             type="email"
+                            name="email"
                             className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
                             placeholder="Email"
                             onBlur={handleOnBlur}
@@ -69,6 +72,7 @@ const handleSubmit = (e) => {
                         </span>
                         <input
                             type="password"
+                            name="password"
                             className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
                             placeholder="Password"
                             onBlur={handleOnBlur}
@@ -82,6 +86,7 @@ const handleSubmit = (e) => {
                         </span>
                         <input
                             type="password"
+                            name="password2"
                             className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
                             placeholder="Re-Type Password"
                             onBlur={handleOnBlur}
@@ -97,11 +102,20 @@ const handleSubmit = (e) => {
                     </button>{" "}
                     <br /> <br />
                 </form>
-                <button onClick={signInWithGoogle} className="font-bold bg-red-600 px-3 py-2 rounded text-white w-full">
+                <button
+                    onClick={signInWithGoogle}
+                    className="font-bold bg-red-600 px-3 py-2 rounded text-white w-full"
+                >
                     Google Sign In
                 </button>{" "}
                 <br /> <br />
-                <Link to="/login" className="underline underline-offset-2">
+                {isLoading && <h1 className="text-pink-600">Processing...</h1>}
+                {user?.email && (
+                    <p className="text-green-600">User created successfully!</p>
+                )}
+                {authError && <p className="text-green-600">{authError}</p>}{" "}
+                <br />
+                <Link to="/login" className="underline underline-offset-2 text-blue-600">
                     Already Have An Account?
                 </Link>
             </div>
