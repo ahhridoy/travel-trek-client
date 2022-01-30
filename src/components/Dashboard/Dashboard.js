@@ -9,7 +9,7 @@ const Dashboard = () => {
             <div className="col-span-1 bg-pink-600 h-full py-5">
                 <div className="flex flex-col">
                     <Link
-                        to="/dashboard/showBlogs"
+                        to="/dashboard"
                         className="font-bold px-3 py-2 text-white rounded-lg hover:bg-slate-100 hover:text-slate-900"
                     >
                         Manage Blogs
